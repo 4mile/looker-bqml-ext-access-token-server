@@ -1,5 +1,5 @@
 {
-  "name": "looker-bqml-ext-access-token-server",
+  "name": "looker-ext-access-token-server",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/4mile/looker-bqml-ext-access-token-server.git"
+    "url": "git+https://github.com/4mile/looker-ext-access-token-server.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/4mile/looker-bqml-ext-access-token-server/issues"
+    "url": "https://github.com/4mile/looker-ext-access-token-server/issues"
   },
-  "homepage": "https://github.com/4mile/looker-bqml-ext-access-token-server#readme",
+  "homepage": "https://github.com/4mile/looker-ext-access-token-server#readme",
   "dependencies": {
     "@looker/sdk": "^22.4.2",
     "@looker/sdk-node": "^22.4.2",
