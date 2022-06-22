@@ -16,15 +16,13 @@ This project is set up to deploy only to GCP App Engine and to only use its atta
 
 ## How do I set this up?
 
-There are three basic steps/parts, all of which are required:
+There are three basic steps/parts:
 
 1. Configure and deploy the access token server to App Engine
-   1. _Detailed walk-through coming soon_
-2. Adjust the App Engine default service account's roles
-   1. _Detailed walk-through coming soon_
+2. Adjust the App Engine default service account's roles and create firewall rules
 3. Install and configure the Looker BQML extension app
-   1. _Detailed walk-through coming soon_
-   2. In order to retrieve access tokens from this service, a valid Looker `client_id` and `client_secret` are required. These Looker credentials are first validated by the access token server before any access token is generated or returned. The BQML Accelerator extension app pulls these credentials from Looker user attributes and must provide them in its calls to the access token server. Thus, you/your Looker admin will need to make sure these user attributes are set.
+
+Please see [the detailed setup guide here](docs/README-SETUP.md)
 
 ## Acknowledgements / Related Resource
 
