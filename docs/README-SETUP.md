@@ -86,19 +86,18 @@ You can (and should) lock down access to your access token server by setting som
 ### 3. Configure the Looker extension app
 
 1. Now set the three additional user attributes required for the service account auth strategy:
+   - **NOTES ABOUT THESE USER ATTRIBUTES:**
+     - These user attributes **must be namespaced/scoped for the extension app** ([see Looker docs regarding scoped user attributes](https://docs.looker.com/data-modeling/extension-framework/js-r-extension-examples#user_attributes)), so make sure that the **attribute names** are prepended with `your_project_name_your_project_name_`. For example, if your Looker project name is `bqml-accelerator`, then the name for the `looker_client_id` user attribute should be: `bqml_accelerator_bqml_accelerator_looker_client_id`)
+     - It is highly recommeneded that **User Access** for these user attributes is set to **None** so that standard users are not able to see these keys when they log in. ([See the "User Access" section of "Viewing User Attributes" for more details](https://cloud.google.com/looker/docs/admin-panel-users-user-attributes#viewing_user_attributes))
 
    - `looker_client_id` and `looker_client_secret`
      - These refer to Looker API3 credentials ( [see this Looker API auth documentation](https://docs.looker.com/reference/api-and-integration/api-auth), and ["Edit API3 Keys" section of this Looker doc](https://docs.looker.com/admin-options/settings/users))
      - These credentials are passed from the BQML Accelerator extension to your access token server in order to validate that the token request is coming from someone with valid Looker API creds for your Looker instance. **See documentation in the access token server repo for more details**.
-       - You can set default values using one set of API3 credentials (a single Looker admin) for all your users or a group of users, or you can set individual user values so each of your users is using their own API keys.
+     - You can set default values using one set of API3 credentials (a single Looker admin) for all your users or a group of users, or you can set individual user values so each of your users is using their own API keys.
+    
    - `access_token_server_endpoint`
-
      - This is the endpoint for your App Engine app, which the extension app will call to request a token. **REMEMBER: must end in `/access_token`!** So something like: `https://{YOUR_GCP_PROJECT_ID}.uc.r.appspot.com/access_token`
      - **NOTE:** If this user attribute is not properly set, the BQML Accelerator app will not be able to use service account authentication and will attempt to fall back on OAuth2 implicit flow instead (using end-user credentials rather than service account)
-
-     **NOTE:** All of these user attributes **must be namespaced/scoped for the extension app** ([see Looker docs regarding scoped user attributes](https://docs.looker.com/data-modeling/extension-framework/js-r-extension-examples#user_attributes)), so make sure that the **attribute names** are prepended with `your_project_name_your_project_name_`.
-
-     For example, if your Looker project name is `bqml-accelerator`, then the name for the `looker_client_id` user attribute should be: `bqml_accelerator_bqml_accelerator_looker_client_id`)
 
 2. Make sure these three scoped user attributes are in your extension app's manifest file as **`scoped_user_attributes`** entitlements
    (see example below)
